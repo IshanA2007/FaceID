@@ -11,7 +11,7 @@ def display_image(x, y, code_output):
     plt.imshow(image, cmap='gray')
     plt.show()
 def load_train_set():
-    with open("mnist_train.csv") as f:
+    with open("training.csv") as f:
         training_set = []
         for line in f:
             number, *image = line.strip().split(",")
@@ -23,7 +23,7 @@ def load_train_set():
             training_set.append((x, y))
     return training_set
 def load_test_set():
-    with open("mnist_test.csv") as f:
+    with open("training.csv") as f:
         testing_set = []
         for line in f:
             number, *image = line.strip().split(",")
@@ -166,7 +166,7 @@ if len(a) > 0 and a[0] == "y":
     test_network(w, b, testing_set)
 else:
     training_set = load_train_set()
-    hidden_layers = [300]
+    hidden_layers = [300, 100]
     a = input("load from file?").lower()
     if len(a) > 0 and a[0] == "y":
         print("loading weights and biases from file")
