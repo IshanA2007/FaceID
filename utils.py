@@ -33,6 +33,23 @@ def gen_training_csv(uservid, othervid):
             row = [item[0]] + item[1]
             writer.writerow(row)
 
+
+def gen_testing(uservid, othervid):
+    testing = []
+    # process uservid, othervid into images (1024 numbers, 0-255), add to testing list with ids
+    gen_frame_data(uservid, testing, 1)
+    gen_frame_data(othervid, testing, 0)
+    return testing
+
+def gen_testing_csv(uservid, othervid):
+    testing = gen_testing(uservid, othervid)
+    # process testing and add to csv
+    with open("testing.csv", mode="w", newline='') as file:
+        writer = csv.writer(file)
+        for item in testing:
+            row = [item[0]] + item[1]
+            writer.writerow(row)
+
 import matplotlib.pyplot as plt
 def display_image(x):
     x = np.array(x)
@@ -41,5 +58,5 @@ def display_image(x):
     plt.imshow(image, cmap='gray')
     plt.show()
 
-#gen_training_csv("uservid.MOV", "othervid.MOV")
-print(len(open("training.csv").read().splitlines()))
+gen_training_csv("uservid_diverse.MOV", "othervid_diverse.MOV")
+#gen_testing_csv("uservid_testing.MOV", "othervid_testing.MOV")

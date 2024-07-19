@@ -23,7 +23,7 @@ def load_train_set():
             training_set.append((x, y))
     return training_set
 def load_test_set():
-    with open("training.csv") as f:
+    with open("testing.csv") as f:
         testing_set = []
         for line in f:
             number, *image = line.strip().split(",")
@@ -166,7 +166,7 @@ if len(a) > 0 and a[0] == "y":
     test_network(w, b, testing_set)
 else:
     training_set = load_train_set()
-    hidden_layers = [300, 100]
+    hidden_layers = [150, 20]
     a = input("load from file?").lower()
     if len(a) > 0 and a[0] == "y":
         print("loading weights and biases from file")
