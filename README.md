@@ -1,5 +1,3 @@
-how do I do it in this readme:
-
 # 🧠 FaceID
 
 ## 📌 Overview
